@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="root" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.dep11.controller.MainViewConstroller">
+   <children>
+      <Button fx:id="btnNewCustomer" layoutX="444.0" layoutY="13.0" mnemonicParsing="false" onAction="#btnNewCustomerOnAction" style="-fx-background-color: green;" text="+ NEW CUSTOMER" textFill="WHITE" AnchorPane.rightAnchor="14.0" />
+      <GridPane alignment="CENTER_RIGHT" layoutX="16.0" layoutY="54.0" prefHeight="93.0" prefWidth="570.0" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="14.0">
+        <columnConstraints>
+          <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" maxWidth="279.0" minWidth="10.0" prefWidth="130.0" />
+          <ColumnConstraints hgrow="SOMETIMES" maxWidth="440.0" minWidth="10.0" prefWidth="440.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="41.0" minHeight="10.0" prefHeight="27.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="69.0" minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="81.0" minHeight="10.0" prefHeight="24.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label alignment="CENTER_RIGHT" text="Customer ID :" />
+            <Label text="Customer Name :" GridPane.rowIndex="1" />
+            <Label text="Customer Address :" GridPane.rowIndex="2" />
+            <TextField fx:id="txtCustomerID" prefWidth="190.0" GridPane.columnIndex="1">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="txtCustomerName" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </TextField>
+            <TextField fx:id="txtCustomerAddress" prefHeight="15.0" prefWidth="170.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <GridPane.margin>
+                  <Insets left="10.0" />
+               </GridPane.margin>
+            </TextField>
+         </children>
+      </GridPane>
+      <TableView fx:id="tblCustomer" layoutX="16.0" layoutY="209.0" prefHeight="191.0" prefWidth="570.0" AnchorPane.bottomAnchor="15.0">
+        <columns>
+          <TableColumn prefWidth="97.0" text="ID" />
+          <TableColumn prefWidth="163.0" text="NAME" />
+            <TableColumn prefWidth="309.0" text="ADDRESS" />
+        </columns>
+      </TableView>
+      <Label layoutX="14.0" layoutY="15.0" text="Customer Details" AnchorPane.leftAnchor="14.0">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+      <HBox layoutX="154.0" layoutY="152.0" spacing="15.0">
+         <children>
+            <Button fx:id="btnSave" defaultButton="true" mnemonicParsing="false" onAction="#btnSaveOnAction" text="SAVE" />
+            <Button fx:id="btnDelete" mnemonicParsing="false" onAction="#btnDeleteOnAction" style="-fx-background-color: ORANGE;" text="DELETE" />
+         </children>
+      </HBox>
+   </children>
+</AnchorPane>
