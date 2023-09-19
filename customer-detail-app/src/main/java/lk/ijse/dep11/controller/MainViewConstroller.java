@@ -35,6 +35,22 @@ public class MainViewConstroller {
 
         ObservableList<Customer> customerList = tblCustomer.getItems();
 
+        File file = new File("customer.dep");
+
+        FileInputStream fis = new FileInputStream(file);
+        ObjectInputStream ois = new ObjectInputStream(fis);
+
+        try{
+            while (true) {
+                Customer customer = (Customer) ois.readObject();
+                customerList.add(customer);
+            }
+        }catch (Exception e){
+
+        }finally {
+            ois.close();
+        }
+
 
     }
     public void btnNewCustomerOnAction(ActionEvent actionEvent) {
