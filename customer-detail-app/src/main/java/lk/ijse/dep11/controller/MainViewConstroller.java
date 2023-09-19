@@ -22,8 +22,8 @@ public class MainViewConstroller {
     public Button btnNewCustomer;
 
     public void initialize() throws IOException, ClassNotFoundException {
-        btnDelete.setDisable(true);
-        txtCustomerID.requestFocus();
+//        btnDelete.setDisable(true);
+//        txtCustomerID.requestFocus();
 
         tblCustomer.getColumns().get(0).setCellValueFactory(new PropertyValueFactory<>("id"));
         tblCustomer.getColumns().get(1).setCellValueFactory(new PropertyValueFactory<>("name"));
@@ -32,17 +32,9 @@ public class MainViewConstroller {
         tblCustomer.getSelectionModel().selectedItemProperty().addListener(e->{
             btnDelete.setDisable(!(tblCustomer.getSelectionModel().getSelectedItem() != null));
         });
+
         ObservableList<Customer> customerList = tblCustomer.getItems();
 
-        File file = new File("customer.dep");
-        FileInputStream fis = new FileInputStream(file);
-        ObjectInputStream ois = new ObjectInputStream(fis);
-
-        try {
-                customerList.add((Customer) ois.readObject());
-        } finally {
-            ois.close();
-        }
 
     }
     public void btnNewCustomerOnAction(ActionEvent actionEvent) {
@@ -82,7 +74,8 @@ public class MainViewConstroller {
 
         customerList.add(customer);
         File file = new File("customer.dep");
-        FileOutputStream fos = new FileOutputStream(file,true);
+        if(!file.exists()) file.createNewFile();
+        FileOutputStream fos = new FileOutputStream(file);
         ObjectOutputStream oos = new ObjectOutputStream(fos);
         try{
             for (Customer customer1 : customerList) {
